@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { actions } from '../redux/store';
 import ContactItem from './Contact';
 
-const { deleteContact, updateFilter } = actions;
+
+const { deleteContactAsync, updateFilter } = actions;
 
 const ContactList = () => {
   const contacts = useSelector(state => state.contacts);
@@ -35,12 +36,14 @@ const ContactList = () => {
           <ContactItem
             key={contact.id}
             contact={contact}
-            onDelete={() => dispatch(deleteContact(contact.id))}
+            onDelete={() => dispatch(deleteContactAsync(contact.id))}
           />
         ))}
       </ul>
     </>
   );
 };
+
+
 
 export default ContactList;

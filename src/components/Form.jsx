@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { actions } from '../redux/store';
-import { nanoid } from 'nanoid';
 
-const { addContact } = actions;
+const { addNewContactAsync } = actions;
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -18,7 +17,7 @@ const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(addContact({ id: nanoid(), name, number }));
+    dispatch(addNewContactAsync({ name, number }));
     setName('');
     setNumber('');
   };

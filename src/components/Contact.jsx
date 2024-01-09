@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ContactItem = ({ contact, onDelete }) => (
   <li className="contact-item">
-    {contact.name}: {contact.number}
+    {contact.name}: {contact.phone}
     <button className="button-del" onClick={onDelete}>Delete</button>
   </li>
 );
@@ -11,7 +11,7 @@ const ContactItem = ({ contact, onDelete }) => (
 ContactItem.propTypes = {
   contact: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
   }).isRequired,
   onDelete: PropTypes.func.isRequired,
 };

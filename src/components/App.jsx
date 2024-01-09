@@ -1,27 +1,15 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { actions } from '../redux/store';
+import { useDispatch } from 'react-redux';
+import { fetchContactsAsync } from '../redux/actions';
 import ContactForm from './Form';
 import ContactList from './List';
 
-const { addContact } = actions;
-
 const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
 
   useEffect(() => {
-    const storedContacts = localStorage.getItem('contacts');
-    if (storedContacts) {
-      JSON.parse(storedContacts).forEach(contact =>
-        dispatch(addContact(contact))
-      );
-    }
+    dispatch(fetchContactsAsync());
   }, [dispatch]);
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
 
   return (
     <div>
