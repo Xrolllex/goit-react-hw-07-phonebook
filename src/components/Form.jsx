@@ -17,7 +17,7 @@ const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    dispatch(addNewContactAsync({ name, number }));
+    dispatch(addNewContactAsync({ name, phone }));
     setName('');
     setNumber('');
   };
