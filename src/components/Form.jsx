@@ -6,20 +6,20 @@ const { addNewContactAsync } = actions;
 
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const dispatch = useDispatch();
 
   const handleInputChange = event => {
     const { name, value } = event.currentTarget;
     if (name === 'name') setName(value);
-    if (name === 'number') setNumber(value);
+    if (name === 'phone') setPhone(value);
   };
 
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(addNewContactAsync({ name, phone }));
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -42,8 +42,8 @@ const ContactForm = () => {
           Number
           <input
             type="text"
-            name="number"
-            value={number}
+            name="phone"
+            value={phone}
             onChange={handleInputChange}
             required
           />
